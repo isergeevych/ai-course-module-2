@@ -1,0 +1,41 @@
+2026-10-12 16:40:04,016 INFO robust_client provider=openai пропущен: нет ключа в .env
+2026-10-12 16:40:04,016 INFO robust_client provider=openrouter пропущен: нет ключа в .env
+2026-10-12 16:40:06,959 INFO httpx2 HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 16:40:06,961 INFO robust_client provider=ollama model=gemma3:4b ok attempts=1 tokens=833/50 cost=$0.000000
+2026-10-12 16:40:06,962 INFO support_cli turn=1 source=ollama cache_hit=False category=FAQ latency_ms=2880 question_sha=d8b23b3178e5
+2026-10-12 16:40:07,179 INFO httpx2 HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 16:40:07,179 INFO robust_client provider=ollama model=gemma3:4b ok attempts=1 tokens=901/18 cost=$0.000000
+2026-10-12 16:40:07,179 INFO support_cli turn=2 source=ollama cache_hit=False category=FAQ latency_ms=218 question_sha=fd984de5bdce
+2026-10-12 16:40:07,568 INFO httpx2 HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 16:40:07,569 INFO robust_client provider=ollama model=gemma3:4b ok attempts=1 tokens=947/40 cost=$0.000000
+2026-10-12 16:40:07,569 INFO support_cli turn=3 source=ollama cache_hit=False category=Техническая проблема latency_ms=389 question_sha=a0f8cfbc2199
+2026-10-12 16:40:08,013 INFO httpx2 HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 16:40:08,013 INFO robust_client provider=ollama model=gemma3:4b ok attempts=1 tokens=1020/45 cost=$0.000000
+2026-10-12 16:40:08,013 INFO support_cli turn=4 source=ollama cache_hit=False category=Жалоба latency_ms=444 question_sha=a93885ccb3de
+2026-10-12 16:40:08,358 INFO httpx2 HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 16:40:08,358 INFO robust_client provider=ollama model=gemma3:4b ok attempts=1 tokens=1083/35 cost=$0.000000
+2026-10-12 16:40:08,358 INFO support_cli turn=5 source=ollama cache_hit=False category=FAQ latency_ms=345 question_sha=9beade02906d
+2026-10-12 16:40:08,942 INFO httpx2 HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 16:40:08,942 INFO robust_client provider=ollama model=gemma3:4b ok attempts=1 tokens=1146/68 cost=$0.000000
+2026-10-12 16:40:08,942 INFO support_cli turn=6 source=ollama cache_hit=False category=FAQ latency_ms=583 question_sha=ae4325498580
+2026-10-12 16:40:08,942 INFO support_cli turn=7 source=кеш (ollama) cache_hit=True category=FAQ latency_ms=0 question_sha=d8b23b3178e5
+2026-10-12 22:53:12,572 INFO robust_client provider=openai пропущен: нет ключа в .env
+2026-10-12 22:53:13,340 INFO httpx2 HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:53:13,790 INFO robust_client provider=openrouter model=openai/gpt-4o-mini ok attempts=1 tokens=822/54 cost=$0.000156
+2026-10-12 22:53:13,790 INFO support_cli turn=1 source=openrouter cache_hit=False category=FAQ latency_ms=1169 question_sha=d8b23b3178e5
+2026-10-12 22:53:14,330 INFO httpx2 HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:53:14,617 INFO robust_client provider=openrouter model=openai/gpt-4o-mini ok attempts=1 tokens=891/33 cost=$0.000153
+2026-10-12 22:53:14,623 INFO support_cli turn=2 source=openrouter cache_hit=False category=FAQ latency_ms=832 question_sha=fd984de5bdce
+2026-10-12 22:53:15,243 INFO httpx2 HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:53:15,567 INFO robust_client provider=openrouter model=openai/gpt-4o-mini ok attempts=1 tokens=953/34 cost=$0.000163
+2026-10-12 22:53:15,569 INFO support_cli turn=3 source=openrouter cache_hit=False category=Техническая проблема latency_ms=937 question_sha=a0f8cfbc2199
+2026-10-12 22:53:16,105 INFO httpx2 HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:53:16,645 INFO robust_client provider=openrouter model=openai/gpt-4o-mini ok attempts=1 tokens=1013/46 cost=$0.000180
+2026-10-12 22:53:16,645 INFO support_cli turn=4 source=openrouter cache_hit=False category=Жалоба latency_ms=1081 question_sha=a93885ccb3de
+2026-10-12 22:53:17,998 INFO httpx2 HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:53:18,271 INFO robust_client provider=openrouter model=openai/gpt-4o-mini ok attempts=1 tokens=1073/24 cost=$0.000175
+2026-10-12 22:53:18,271 INFO support_cli turn=5 source=openrouter cache_hit=False category=FAQ latency_ms=1624 question_sha=9beade02906d
+2026-10-12 22:53:19,509 INFO httpx2 HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:53:19,930 INFO robust_client provider=openrouter model=openai/gpt-4o-mini ok attempts=1 tokens=1121/24 cost=$0.000183
+2026-10-12 22:53:19,932 INFO support_cli turn=6 source=openrouter cache_hit=False category=FAQ latency_ms=1657 question_sha=ae4325498580
+2026-10-12 22:53:19,932 INFO support_cli turn=7 source=кеш (openrouter) cache_hit=True category=FAQ latency_ms=0 question_sha=d8b23b3178e5

@@ -1,0 +1,16 @@
+{
+  "memory": {
+    "backend": "memory",
+    "hits": 3,
+    "misses": 4,
+    "hit_rate_pct": 42.9,
+    "size": 4
+  },
+  "redis": {
+    "backend": "redis",
+    "hits": 3,
+    "misses": 4,
+    "hit_rate_pct": 42.9,
+    "size": 4
+  }
+}

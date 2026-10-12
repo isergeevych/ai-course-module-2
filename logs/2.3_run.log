@@ -1,0 +1,131 @@
+2026-10-12 22:44:25,128 INFO    Реальный провайдер в демо: openrouter (openai/gpt-4o-mini)
+2026-10-12 22:44:25,128 INFO    ==================== 1. Временные сбои: 429, 503 → успех на 3-й попытке (задержки ~1 с, ~2 с) ====================
+2026-10-12 22:44:25,216 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-10-12 22:44:25,216 WARNING provider=openrouter attempt=1 error=429 retry_in=1.13s
+2026-10-12 22:44:26,348 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:44:26,348 WARNING provider=openrouter attempt=2 error=503 retry_in=2.39s
+2026-10-12 22:44:29,489 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:44:29,570 INFO    provider=openrouter model=openai/gpt-4o-mini ok attempts=3 tokens=22/3 cost=$0.000005
+2026-10-12 22:44:29,570 INFO    ответ='Синий.' provider=openrouter attempts=3
+2026-10-12 22:44:29,570 INFO    ==================== 2. Таймаут → retry → успех ====================
+2026-10-12 22:44:29,570 WARNING provider=openrouter attempt=1 error=APITimeoutError retry_in=1.03s
+2026-10-12 22:44:31,441 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:44:31,512 INFO    provider=openrouter model=openai/gpt-4o-mini ok attempts=2 tokens=22/3 cost=$0.000005
+2026-10-12 22:44:31,512 INFO    ответ='Синий.' provider=openrouter attempts=2
+2026-10-12 22:44:31,512 INFO    ==================== 3. OpenAI лежит (500): полная серия 1→2→4→8→16 с → fallback на OpenRouter ====================
+2026-10-12 22:44:31,522 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2026-10-12 22:44:31,522 WARNING provider=openai attempt=1 error=500 retry_in=1.15s
+2026-10-12 22:44:32,672 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2026-10-12 22:44:32,672 WARNING provider=openai attempt=2 error=500 retry_in=2.21s
+2026-10-12 22:44:34,884 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2026-10-12 22:44:34,884 WARNING provider=openai attempt=3 error=500 retry_in=4.09s
+2026-10-12 22:44:38,976 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2026-10-12 22:44:38,976 WARNING provider=openai attempt=4 error=500 retry_in=9.37s
+2026-10-12 22:44:48,350 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2026-10-12 22:44:48,351 WARNING provider=openai attempt=5 error=500 retry_in=16.42s
+2026-10-12 22:45:04,767 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2026-10-12 22:45:04,770 ERROR   provider=openai attempt=6 error=500 → повторы исчерпаны
+2026-10-12 22:45:04,770 WARNING provider=openai недоступен → fallback на следующего
+2026-10-12 22:45:06,311 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:45:06,592 INFO    provider=openrouter model=openai/gpt-4o-mini ok attempts=7 tokens=22/3 cost=$0.000005
+2026-10-12 22:45:06,592 INFO    ответ='Синий.' provider=openrouter attempts=7
+2026-10-12 22:45:06,592 INFO    ==================== 4. 401 у OpenAI — не ретраим, сразу fallback ====================
+2026-10-12 22:45:06,611 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-10-12 22:45:06,613 ERROR   provider=openai attempt=1 error=401 (не ретраим)
+2026-10-12 22:45:06,613 WARNING provider=openai недоступен → fallback на следующего
+2026-10-12 22:45:07,376 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:45:07,444 INFO    provider=openrouter model=openai/gpt-4o-mini ok attempts=2 tokens=22/3 cost=$0.000005
+2026-10-12 22:45:07,444 INFO    ответ='Синий.' provider=openrouter attempts=2
+2026-10-12 22:45:07,444 INFO    ==================== 5. Circuit breaker: 3 неудачных запроса подряд → OpenAI пропускается 60 с (задержки ускорены) ====================
+2026-10-12 22:45:07,444 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:07,444 WARNING provider=openai attempt=1 error=503 retry_in=0.06s
+2026-10-12 22:45:07,508 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:07,508 WARNING provider=openai attempt=2 error=503 retry_in=0.12s
+2026-10-12 22:45:07,628 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:07,629 ERROR   provider=openai attempt=3 error=503 → повторы исчерпаны
+2026-10-12 22:45:07,629 WARNING provider=openai недоступен → fallback на следующего
+2026-10-12 22:45:08,643 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:45:08,856 INFO    provider=openrouter model=openai/gpt-4o-mini ok attempts=4 tokens=22/3 cost=$0.000005
+2026-10-12 22:45:08,856 INFO    запрос 1: provider=openrouter attempts=4
+2026-10-12 22:45:08,857 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:08,857 WARNING provider=openai attempt=1 error=503 retry_in=0.06s
+2026-10-12 22:45:08,915 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:08,915 WARNING provider=openai attempt=2 error=503 retry_in=0.10s
+2026-10-12 22:45:09,020 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:09,020 ERROR   provider=openai attempt=3 error=503 → повторы исчерпаны
+2026-10-12 22:45:09,020 WARNING provider=openai недоступен → fallback на следующего
+2026-10-12 22:45:10,338 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:45:10,567 INFO    provider=openrouter model=openai/gpt-4o-mini ok attempts=4 tokens=22/3 cost=$0.000005
+2026-10-12 22:45:10,567 INFO    запрос 2: provider=openrouter attempts=4
+2026-10-12 22:45:10,567 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:10,567 WARNING provider=openai attempt=1 error=503 retry_in=0.06s
+2026-10-12 22:45:10,627 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:10,627 WARNING provider=openai attempt=2 error=503 retry_in=0.12s
+2026-10-12 22:45:10,748 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:10,748 ERROR   provider=openai attempt=3 error=503 → повторы исчерпаны
+2026-10-12 22:45:10,748 ERROR   provider=openai 3 неудачных запросов подряд → circuit OPEN на 60 с
+2026-10-12 22:45:10,748 WARNING provider=openai недоступен → fallback на следующего
+2026-10-12 22:45:12,183 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:45:12,406 INFO    provider=openrouter model=openai/gpt-4o-mini ok attempts=4 tokens=22/3 cost=$0.000005
+2026-10-12 22:45:12,406 INFO    запрос 3: provider=openrouter attempts=4
+2026-10-12 22:45:12,406 WARNING provider=openai circuit=OPEN — пропускаем провайдера
+2026-10-12 22:45:13,403 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:45:13,640 INFO    provider=openrouter model=openai/gpt-4o-mini ok attempts=1 tokens=22/3 cost=$0.000005
+2026-10-12 22:45:13,641 INFO    запрос 4: provider=openrouter attempts=1
+2026-10-12 22:45:13,641 INFO    ==================== 6. Все провайдеры лежат → сообщение-заглушка (задержки ускорены) ====================
+2026-10-12 22:45:13,645 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:13,646 WARNING provider=openai attempt=1 error=503 retry_in=0.05s
+2026-10-12 22:45:13,698 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:13,698 WARNING provider=openai attempt=2 error=503 retry_in=0.12s
+2026-10-12 22:45:13,820 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:13,820 WARNING provider=openai attempt=3 error=503 retry_in=0.23s
+2026-10-12 22:45:14,054 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:14,054 WARNING provider=openai attempt=4 error=503 retry_in=0.46s
+2026-10-12 22:45:14,515 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:14,515 WARNING provider=openai attempt=5 error=503 retry_in=0.95s
+2026-10-12 22:45:15,469 INFO    HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:15,469 ERROR   provider=openai attempt=6 error=503 → повторы исчерпаны
+2026-10-12 22:45:15,469 WARNING provider=openai недоступен → fallback на следующего
+2026-10-12 22:45:15,469 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:15,469 WARNING provider=openrouter attempt=1 error=503 retry_in=0.06s
+2026-10-12 22:45:15,535 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:15,535 WARNING provider=openrouter attempt=2 error=503 retry_in=0.11s
+2026-10-12 22:45:15,644 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:15,644 WARNING provider=openrouter attempt=3 error=503 retry_in=0.25s
+2026-10-12 22:45:15,892 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:15,892 WARNING provider=openrouter attempt=4 error=503 retry_in=0.49s
+2026-10-12 22:45:16,386 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:16,386 WARNING provider=openrouter attempt=5 error=503 retry_in=0.97s
+2026-10-12 22:45:17,354 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-10-12 22:45:17,354 ERROR   provider=openrouter attempt=6 error=503 → повторы исчерпаны
+2026-10-12 22:45:17,354 WARNING provider=openrouter недоступен → fallback на следующего
+2026-10-12 22:45:17,354 ERROR   все провайдеры недоступны → ответ-заглушка
+2026-10-12 22:45:17,354 INFO    ответ='Сервис временно недоступен, попробуйте позже.' degraded=True attempts=12
+2026-10-12 22:45:17,354 INFO    ==================== 7. Rate limiter: 3 запроса в минуту, 5 вызовов (виртуальное время, без ожидания) ====================
+2026-10-12 22:45:17,354 INFO    вызов 1 пропущен в t=0.0 с
+2026-10-12 22:45:17,354 INFO    вызов 2 пропущен в t=0.0 с
+2026-10-12 22:45:17,354 INFO    вызов 3 пропущен в t=0.0 с
+2026-10-12 22:45:17,354 INFO    rate_limiter wait=60.00s (лимит 3/мин)
+2026-10-12 22:45:17,354 INFO    вызов 4 пропущен в t=60.0 с
+2026-10-12 22:45:17,354 INFO    вызов 5 пропущен в t=60.0 с
+2026-10-12 22:45:17,354 INFO    ==================== 8. Учёт usage и стоимости: 3 реальных запроса без сбоев ====================
+2026-10-12 22:45:18,126 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:45:18,213 INFO    provider=openrouter model=openai/gpt-4o-mini ok attempts=1 tokens=15/8 cost=$0.000007
+2026-10-12 22:45:18,775 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:45:18,860 INFO    provider=openrouter model=openai/gpt-4o-mini ok attempts=1 tokens=14/9 cost=$0.000008
+2026-10-12 22:45:19,460 INFO    HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-12 22:45:19,598 INFO    provider=openrouter model=openai/gpt-4o-mini ok attempts=1 tokens=19/11 cost=$0.000009
+{
+  "openrouter": {
+    "requests": 3,
+    "prompt_tokens": 48,
+    "completion_tokens": 28,
+    "cost_usd": 2.4e-05
+  },
+  "total": {
+    "requests": 3,
+    "prompt_tokens": 48,
+    "completion_tokens": 28,
+    "cost_usd": 2.4e-05
+  }
+}

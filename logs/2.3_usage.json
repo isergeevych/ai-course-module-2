@@ -1,0 +1,14 @@
+{
+  "openrouter": {
+    "requests": 3,
+    "prompt_tokens": 48,
+    "completion_tokens": 28,
+    "cost_usd": 2.4e-05
+  },
+  "total": {
+    "requests": 3,
+    "prompt_tokens": 48,
+    "completion_tokens": 28,
+    "cost_usd": 2.4e-05
+  }
+}
